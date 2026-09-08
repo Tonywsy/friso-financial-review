@@ -216,7 +216,7 @@ var Vr={},Br={};var Fr=function(){function t(t,e,n){var i=this;this._sleepAfterS
     <p class="section-desc" data-page-node-id="swMqKsUuVGPCaxVaPn7ile">美素佳儿所在业务集团 · 2025 年报已审计口径 · 用「每 100 欧元营收」拆为 6 大成本分量 + 营业利润。</p>
     <div id="chartSPCost" class="chart-box chart-tall" data-page-node-id="cqyuncVgto1i3xEiD3EwFq"></div>
     <div class="chart-s" data-page-node-id="2Xqq8BGpwVfB2BgH9oiBZu">
-      <b data-page-node-id="AtkYrRAjvugXn2trxMKsw5">关键发现</b>：菲仕兰 SP 业务集团 2025 年报口径，<b data-page-node-id="VRJxoFZku8Q1XFKBE61wOG">营业利润率 25.0%</b>（已扣完全部费用）——意味着每 100 欧元营收，<b data-page-node-id="7YFXYcPgtxEq96d5q0GpIf">75.0 欧元转化为全部成本投入</b>。其中：<b style="color:#1A4FA0">原奶 &amp; 原料 30.0</b>（奶农股东返还机制核心）· <b style="color:#E8852B">生产 &amp; 包装 19.0</b> · <b style="color:#9AA7BE">人员 &amp; 研发 13.0</b> · <b style="color:#C0392B">渠道 &amp; 营销 8.0</b>（含冠名体育赛事 &amp; 品牌活动）· <b style="color:#8064A0">行政 &amp; 其他 11.4</b>。
+      <b data-page-node-id="AtkYrRAjvugXn2trxMKsw5">关键发现</b>：菲仕兰 SP 业务集团 2025 年报口径，<b data-page-node-id="VRJxoFZku8Q1XFKBE61wOG">营业利润率 25.0%</b>（已扣完全部费用）——意味着每 100 欧元营收，<b data-page-node-id="7YFXYcPgtxEq96d5q0GpIf">75.0 欧元转化为全部成本投入</b>。其中：<b style="color:#1A4FA0">原奶 &amp; 原料 27.6</b>（奶农股东返还机制核心）· <b style="color:#E8852B">生产 &amp; 包装 17.5</b> · <b style="color:#9AA7BE">人员 &amp; 研发 12.0</b> · <b style="color:#C0392B">渠道 &amp; 营销 7.4</b>（含冠名体育赛事 &amp; 品牌活动）· <b style="color:#8064A0">行政 &amp; 其他 10.5</b> · <b style="color:#2E9E6B">营业利润 25.0</b>。
     </div>
 
     <h2 style="margin-top:22px;font-size:18px;color:var(--blue);padding-bottom:6px;border-bottom:1px solid var(--line)" data-page-node-id="KP5c7C7jxzXldB2DsZDAST">费用拆解明细（基于 2025 已审计分摊模型）</h2>
@@ -431,35 +431,38 @@ var Vr={},Br={};var Fr=function(){function t(t,e,n){var i=this;this._sleepAfterS
 
     chart100: {
       title: { text: '菲仕兰 SP 业务集团 · 每 100 欧元营收拆分(2025)', left:'center', textStyle:{fontSize:14,color:'#1A4FA0'}},
-      tooltip:{trigger:'item',formatter:'{b}: {c}%'},
-      legend:{bottom:10, data:['总成本(含全部费用)','营业利润(含税前)']},
-      series:[{
-        type:'pie', radius:['40%','70%'], avoidLabelOverlap:true,
-        label:{formatter:'{b}\\n{c}%'},
-        data:[
-          {value:75.0, name:'总成本(含全部费用)', itemStyle:{color:'#3B6FD0'}},
-          {value:25.0, name:'营业利润(含税前)', itemStyle:{color:'#2E9E6B'}}
-        ]
-      }]
+      tooltip:{trigger:'axis', axisPointer:{type:'shadow'}, formatter:function(p){return p[0].name+': '+p[0].value+'%';}},
+      grid:{left:210,right:70,top:50,bottom:30},
+      xAxis:{type:'value', name:'每 100 欧元占比', max:100, axisLabel:{formatter:'{value}%'}},
+      yAxis:{type:'category', data:['总成本(含全部费用)','营业利润(含税前)']},
+      series:[
+        {type:'bar', barWidth:'45%',
+         data:[
+           {value:75.0, itemStyle:{color:'#3B6FD0'}},
+           {value:25.0, itemStyle:{color:'#2E9E6B'}}
+         ],
+         label:{show:true, position:'right', formatter:'{c}%'}}
+      ]
     },
 
     chartSPCost: {
       title: { text: '每 100 欧元成本 → 6 大分量 + 营业利润(2025 推算模型)', left:'center', textStyle:{fontSize:14,color:'#1A4FA0'}},
-      tooltip:{trigger:'item',formatter:'{b}<br>每 100 欧元: {c}<br>占 SP 成本比: {d}%'},
-      legend:{bottom:10, type:'scroll'},
-      series:[{
-        type:'pie', radius:['35%','70%'], avoidLabelOverlap:true,
-        label:{formatter:'{b}\\n{c}'},
-        labelLine:{length:8,length2:6},
-        data:[
-          {value:27.6, name:'原奶 & 原料', itemStyle:{color:'#1A4FA0'}},
-          {value:17.5, name:'生产 & 包装', itemStyle:{color:'#E8852B'}},
-          {value:12.0, name:'人员 & 研发', itemStyle:{color:'#9AA7BE'}},
-          {value:7.4, name:'渠道 & 营销', itemStyle:{color:'#C0392B'}},
-          {value:10.5, name:'行政 & 其他', itemStyle:{color:'#8064A0'}},
-          {value:25.0, name:'营业利润', itemStyle:{color:'#2E9E6B'}}
-        ]
-      }]
+      tooltip:{trigger:'axis', axisPointer:{type:'shadow'}, formatter:function(ps){var s='';ps.forEach(function(p){s+=p.name+'：'+p.value+'（每100欧）<br>';});return s;}},
+      grid:{left:160,right:70,top:50,bottom:30},
+      xAxis:{type:'value', name:'每 100 欧元'},
+      yAxis:{type:'category', data:['原奶 & 原料','生产 & 包装','人员 & 研发','渠道 & 营销','行政 & 其他','营业利润']},
+      series:[
+        {type:'bar', barWidth:'55%',
+         data:[
+           {value:27.6, itemStyle:{color:'#1A4FA0'}},
+           {value:17.5, itemStyle:{color:'#E8852B'}},
+           {value:12.0, itemStyle:{color:'#9AA7BE'}},
+           {value:7.4, itemStyle:{color:'#C0392B'}},
+           {value:10.5, itemStyle:{color:'#8064A0'}},
+           {value:25.0, itemStyle:{color:'#2E9E6B'}}
+         ],
+         label:{show:true, position:'right', formatter:'{c}'}}
+      ]
     },
 
     chart7bg: {
@@ -482,25 +485,23 @@ var Vr={},Br={};var Fr=function(){function t(t,e,n){var i=this;this._sleepAfterS
 
     chartStack: {
       title: { text: '你买的 800g 罐 1 段奶粉，钱怎么分(粗略推算模型)', left:'center', textStyle:{fontSize:14,color:'#1A4FA0'}},
-      tooltip:{trigger:'item',formatter:function(p){
-        return p.name+'<br>'+p.seriesName+': ¥'+p.value+'<br>占比: '+p.percent+'%';
-      }},
-      legend:{bottom:10},
-      series:[{
-        name:'成本构成',
-        type:'pie', radius:['45%','75%'],
-        itemStyle:{borderRadius:6, borderColor:'#fff', borderWidth:2},
-        label:{formatter:'{b}\\n¥{c}\\n{d}%'},
-        data:[
-          {value:130, name:'菲仕兰出厂价(含营销/研发/毛利)', itemStyle:{color:'#1A4FA0'}},
-          {value:50, name:'门店毛利+导购提成', itemStyle:{color:'#E8852B'}},
-          {value:40, name:'经销商加价+终端物流', itemStyle:{color:'#9AA7BE'}},
-          {value:50, name:'增值税+关税/进口环节', itemStyle:{color:'#C0392B'}},
-          {value:25, name:'跨境仓储/海淘成本', itemStyle:{color:'#2E9E6B'}},
-          {value:50, name:'品牌/营销(经销环节)', itemStyle:{color:'#8064A0'}}
-        ]
-      }]
-    }
+      tooltip:{trigger:'axis', axisPointer:{type:'shadow'}, formatter:function(ps){var p=ps[0];var pct=(p.value/345*100).toFixed(1);return p.name+'<br>¥'+p.value+'（'+pct+'%）';}},
+      grid:{left:230,right:80,top:50,bottom:30},
+      xAxis:{type:'value', name:'元', max:345},
+      yAxis:{type:'category', data:['菲仕兰出厂价(含营销/研发/毛利)','门店毛利+导购提成','经销商加价+终端物流','增值税+关税/进口环节','跨境仓储/海淘成本','品牌/营销(经销环节)']},
+      series:[
+        {type:'bar', barWidth:'50%',
+         data:[
+           {value:130, itemStyle:{color:'#1A4FA0'}},
+           {value:50, itemStyle:{color:'#E8852B'}},
+           {value:40, itemStyle:{color:'#9AA7BE'}},
+           {value:50, itemStyle:{color:'#C0392B'}},
+           {value:25, itemStyle:{color:'#2E9E6B'}},
+           {value:50, itemStyle:{color:'#8064A0'}}
+         ],
+         label:{show:true, position:'right', formatter:'¥{c}'}}
+      ]
+    },
   };
 
   function renderOrFallback(elId, cfg, fallback){
